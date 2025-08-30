@@ -11,7 +11,7 @@ def gries_misra(n):
             factor[p*x] = p
     return factor, primes
 
-fac, prm = gries_misra(30)
+fac, prm = gries_misra(144)
 print(fac)
 print(prm)
 
