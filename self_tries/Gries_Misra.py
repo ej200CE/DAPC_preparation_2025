@@ -15,3 +15,13 @@ def gries_misra(n):
 fac, prm = gries_misra(30)
 print(fac)
 print(prm)
+
+
+
+
+
+
+
+
+
+
