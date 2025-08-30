@@ -1,4 +1,3 @@
-
 def gries_misra(n):
     factor = [0]*n
     primes = []
