@@ -1,7 +1,7 @@
 M = 20
 price = [[6,4,8],[5,10],[1,5,3,5]]
 
-def shopping(M:int, price: list[list[int]]) -> str:
+def shopping_top_down(M:int, price: list[list[int]]) -> str:
     C = len(price)
     reach = [False] * (M + 1)
     reach[0] = True
@@ -17,5 +17,25 @@ def shopping(M:int, price: list[list[int]]) -> str:
         if reach[i]:
             return i
 
-res = shopping(M, price)
+
+def shopping_bottom_up(M:int, price: list[list[int]]) -> str:
+    C = len(price)
+    states = [[0] * M for _ in range(C)]
+    for p in price[0]:
+        if M - p >= 0:
+            states[0][M-p] = 1
+    for row in range(1, C):
+        for state in range(M):
+            if states[row-1][state] == 1:
+                for p in price[row]:
+                    r = state - p
+                    if r >= 0:
+                        states[row][r] = 1
+    for s in range(0, M):
+        if states[-1][s] == 1:
+            return M - s
+    return "not reachable"
+
+
+res = shopping_bottom_up(M, price)
 print(res)
